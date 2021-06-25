@@ -9,7 +9,7 @@ const Film = require("./models/film")
 //Update - EB
 router.put('/films/:id', async (req, res) => {
     try {
-        const film = await Films.findById(req.params.id);
+        const film = await Film.findById(req.params.id);
         film.title = req.body.title
         film.description = req.body.description
         film.dateRelease = req.body.dateRelease
@@ -27,7 +27,8 @@ router.put('/films/:id', async (req, res) => {
 //Patch Update Many - EB
 router.patch('/films/:id', async (req, res) => {
     try {
-        const film = await Films.findById(req.params.id);
+        const film = await Film.findById(req.params.id);
+
         film.title = req.body.title || film.title;
         film.description = req.body.description || film.description;
         film.dateRelease = req.body.dateRelease || film.dateRelease;
@@ -35,7 +36,8 @@ router.patch('/films/:id', async (req, res) => {
 		film.reviews = req.body.reviews || film.reviews;
         film.save();
         res.send(film);
-    } catch {
+    } catch (e) {
+		console.log(e);
         res.status(404);
         res.send({ error: "Database error Film did not updated. (Film not found)" })
     }
@@ -45,7 +47,7 @@ router.patch('/films/:id', async (req, res) => {
 // Delete - EB
 router.delete('/films/:id', async (req, res) => {
     try {
-        const film = await Films.findByIdAndRemove(req.params.id);
+        const film = await Film.findByIdAndRemove(req.params.id);
         res.send(film);
     } catch {
         res.status(404);
