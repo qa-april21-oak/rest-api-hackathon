@@ -39,5 +39,3 @@ const actors = new Schema({
         type: String
     }]
 })
-
-module.exports = data
