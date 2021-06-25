@@ -1,0 +1,25 @@
+{
+  "name": "rest-api-hackathon",
+  "version": "1.0.0",
+  "description": "This is an expressJS REST API with mongoose",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qa-april21-oak/rest-api-hackathon.git"
+  },
+  "keywords": [],
+  "author": "Team Oak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qa-april21-oak/rest-api-hackathon/issues"
+  },
+  "homepage": "https://github.com/qa-april21-oak/rest-api-hackathon#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14",
+    "nodemon": "^2.0.7"
+  }
+}
