@@ -8,7 +8,11 @@ const Film = require("./film")
 router.post("/film", async (req, res) => {
 	const film = new Film({
 		// TODO
-	})
+		title: req.body.title,
+		description: req.body.description,
+		dateRelease: req.body.dateRelease,
+		filmTime: req.body.filmTime
+	});
 
 	await film.save();
 
