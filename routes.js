@@ -10,9 +10,11 @@ const router = express.Router();
 //Update - EB
 router.put('/films/:id', async (req, res) => {
     try {
-        const film = await Films.findByIdAndUpdate({ _id }, req.params.id);
-        film.name = req.body.name
-        film.price = req.body.price
+        const film = await Films.findById(req.params.id);
+        film.title = req.body.title
+        film.description = req.body.description
+        film.dateRelease = req.body.dateRelease
+        film.filmTime = req.body.filmTime
         film.save();
         res.send(film);
 
@@ -26,11 +28,10 @@ router.put('/films/:id', async (req, res) => {
 router.patch('/films/:id', async (req, res) => {
     try {
         const film = await Films.findById(req.params.id);
-        film.name = req.body.name || film.name
-        film.price = req.body.rpice || film.price
-
-
-
+        film.title = req.body.title || film.title
+        film.description = req.body.description || film.description
+        film.dateRelease = req.body.dateRelease || film.dateRelease
+        film.filmTime = req.body.filmTime || film.filmTime
         film.save();
         res.send(film);
     } catch {
