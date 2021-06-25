@@ -6,9 +6,6 @@ const Film = require("./models/film")
 
 // routes go here
 
-
-
-
 //Update - EB
 router.put('/films/:id', async (req, res) => {
     try {
@@ -52,11 +49,11 @@ router.delete('/films/:id', async (req, res) => {
         res.status(404);
         res.send({ error: "Film doesn't exist" })
     }
+});
 
 
 router.post("/film", async (req, res) => {
 	const film = new Film({
-		// TODO
 		title: req.body.title,
 		description: req.body.description,
 		dateRelease: req.body.dateRelease,
