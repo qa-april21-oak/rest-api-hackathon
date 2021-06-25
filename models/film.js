@@ -5,6 +5,5 @@ const movieSchema = new Schema({
     title: String,
     description: String,
     dateRelease: Date,
-    filmTime: Date,
+});
 
-})
