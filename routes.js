@@ -3,8 +3,11 @@ const express = require("express");
 const router = express.Router();
 
 const Film = require("./models/film")
+
 // routes go here
 
+//Update - EB
+router.put('/films/:id', async (req, res) => {
     try {
         const film = await Films.findById(req.params.id);
         film.title = req.body.title
@@ -47,6 +50,7 @@ router.delete('/films/:id', async (req, res) => {
         res.send({ error: "Film doesn't exist" })
     }
 });
+
 
 router.post("/film", async (req, res) => {
 	const film = new Film({
