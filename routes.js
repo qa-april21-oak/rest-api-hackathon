@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const Film = require("./film")
+const Film = require("./models/film")
 // routes go here
 
 router.post("/film", async (req, res) => {
