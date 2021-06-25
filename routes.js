@@ -13,13 +13,14 @@ router.put('/films/:id', async (req, res) => {
         film.title = req.body.title
         film.description = req.body.description
         film.dateRelease = req.body.dateRelease
-        film.filmTime = req.body.filmTime
+		film.actors = req.body.actors;
+		film.reviews = req.body.reviews;
         film.save();
         res.send(film);
 
     } catch {
         res.status(404);
-        res.send({ error: "Database error Film did not updated." })
+        res.send({ error: "Database error Film did not updated." });
     }
 })
 
@@ -27,10 +28,11 @@ router.put('/films/:id', async (req, res) => {
 router.patch('/films/:id', async (req, res) => {
     try {
         const film = await Films.findById(req.params.id);
-        film.title = req.body.title || film.title
-        film.description = req.body.description || film.description
-        film.dateRelease = req.body.dateRelease || film.dateRelease
-        film.filmTime = req.body.filmTime || film.filmTime
+        film.title = req.body.title || film.title;
+        film.description = req.body.description || film.description;
+        film.dateRelease = req.body.dateRelease || film.dateRelease;
+		film.actors = req.body.actors || film.actors;
+		film.reviews = req.body.reviews || film.reviews;
         film.save();
         res.send(film);
     } catch {
@@ -53,16 +55,20 @@ router.delete('/films/:id', async (req, res) => {
 
 
 router.post("/film", async (req, res) => {
+
+	try {
 	const film = new Film({
 		title: req.body.title,
 		description: req.body.description,
 		dateRelease: req.body.dateRelease,
-		filmTime: req.body.filmTime
 	});
 
 	await film.save();
 
 	res.send(film);
+	} catch (e) {
+		res.status(404).send(e.name + ': ' + e.message);
+	}
 })
 
 router.get("/film/:id", async(req, res) => {

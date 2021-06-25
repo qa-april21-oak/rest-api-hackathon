@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Creation of the film schema
-const movieSchema = new Schema({
-    title: String,
-    description: String,
-    dateRelease: Date,
-});
+const {reviews, actors} = require("./dataSchema");
 
 // Validation of the Schema
 const movieSchema = new Schema({
@@ -23,9 +18,10 @@ const movieSchema = new Schema({
     dateRelease: {
         type: Date,
         required: true,
-        min: 1940 - 01 - 01,
-        max: 2022 - 01 - 01
-    }
+    },
+	actors: [actors],
+	reviews: [reviews]
+
 });
 
-module.exports = films
+module.exports = mongoose.model("Films", movieSchema);

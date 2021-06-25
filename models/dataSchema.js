@@ -39,3 +39,8 @@ const actors = new Schema({
         type: String
     }]
 })
+
+module.exports = {
+	"actors": actors,
+	"reviews": reviews
+}
