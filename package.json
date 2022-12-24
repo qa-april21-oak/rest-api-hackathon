@@ -19,7 +19,7 @@
   "homepage": "https://github.com/qa-april21-oak/rest-api-hackathon#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.14",
+    "mongoose": "^5.13.15",
     "nodemon": "^2.0.7"
   }
 }
